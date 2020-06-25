@@ -39,6 +39,31 @@ def is_prime_v2(num: int) -> bool:
     return True
 
 
+def is_prime_v2_1(num: int) -> bool:
+    i = 2
+    while i * i <= num:
+        if num % i == 0:
+            return False
+    return True
+
+
+def is_prime_v3(num: int) -> bool:
+    if num <= 1:
+        return False
+
+    if num == 2:
+        return True
+
+    if num % 2 == 0:
+        return False
+
+    for i in range(3, math.floor(math.sqrt(num) + 1), 2):
+        if num % i == 0:
+            return False
+
+    return True
+
+
 if __name__ == '__main__':
     import random
     import time
@@ -54,3 +79,8 @@ if __name__ == '__main__':
     for num in numbers:
         is_prime_v2(num)
     print('v2', time.time() - start)
+
+    start = time.time()
+    for num in numbers:
+        is_prime_v3(num)
+    print('v3', time.time() - start)
